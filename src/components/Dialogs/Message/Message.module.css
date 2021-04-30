@@ -1,0 +1,40 @@
+.chat_message {}
+
+/*      message */
+.message {
+    display: flex;
+}
+
+.message img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.block_message {
+    background: rgba(120, 121, 119, 0.5);
+    border-top: 1px solid rgb(124, 99, 99);
+    border-left: 1px solid rgb(124, 99, 99);
+    border-radius: 0 20px 20px 20px;
+    position: relative;
+    padding: 32px 65px 15px 65px;
+    margin: 20px 30px;
+}
+
+.block_message .name {
+    font-size: 14px;
+    border-bottom: 1px solid rgba(120, 121, 119, 0.7);
+    position: absolute;
+    top: 3px;
+    left: 5px;
+    right: 5px;
+}
+
+.block_message .days_muted {
+    font-size: 11px;
+    position: absolute;
+    top: 6px;
+    right: 20px;
+}

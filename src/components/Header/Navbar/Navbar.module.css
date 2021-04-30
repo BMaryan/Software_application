@@ -1,0 +1,22 @@
+.navbar {}
+
+.nav {
+  display: flex;
+}
+
+.item {
+  list-style: none;
+  margin: 7px 0 7px 30px;
+}
+
+.link {
+  color: rgb(223, 220, 220);
+  text-decoration: none;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.active {
+  color: rgb(91, 91, 91);
+  transition: 0.5s;
+}

@@ -1,0 +1,61 @@
+.dialog {
+    list-style: none;
+    margin: 0 10px 20px 0;
+}
+
+/* contact route */
+
+.contact {
+    color: rgb(99, 95, 95);
+    text-decoration: none;
+    border-bottom: 1px solid rgb(187, 185, 185);
+    display: flex;
+    padding: 3px 0;
+    transition: 0.5s;
+}
+
+.contact img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+    display: flex;
+}
+
+.contact:hover {
+    border-bottom: 1px solid #8dc63f;
+}
+
+.active {
+    background: rgb(191, 191, 191);
+    border-bottom: 1px solid #8dc63f;
+    border-radius: 20px;
+    padding: 3px 0;
+    transition: 0.5s;
+}
+
+/* message preview */
+
+.msg_preview {
+    width: 170px;
+    max-width: 100%;
+    position: relative;
+    padding: 25px 0 5px 5px;
+}
+
+.msg_preview .name {
+    color: black;
+    font-size: 14px;
+    position: absolute;
+    top: 3px;
+    left: 0px;
+    left: 5px;
+}
+
+.msg_preview .days_muted {
+    font-size: 11px;
+    position: absolute;
+    top: 6px;
+    right: 1px;
+}

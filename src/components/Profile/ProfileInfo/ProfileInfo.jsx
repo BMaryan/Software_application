@@ -1,0 +1,33 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
+import React from "react";
+import style from "./ProfileInfo.module.css";
+
+const ProfileInfo = () => {
+    return (
+        <div className={style.timeline_cover}>
+            <div className={style.timeline_wrapper}>
+                <div className={style.timeline_nav_bar}>
+                    <div className={style.profile_info}>
+                        <div><img className={style.profile_info_avatarka} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9gi5CDty4l6bxTwEBIBYrIFNuMrZNsb0COw&usqp=CAU" alt=""/></div>
+                        <div className={style.profile_info_fullname}>Burban Maryan</div>
+                    </div>
+
+                    <div className={style.profile_menu}>
+                        <ul className={style.list_profile_menu}>
+                            <li className={style.item}><a href="">Timeline</a></li>
+                            <li className={style.item}><a href="">About</a></li>
+                            <li className={style.item}><a href="">Album</a></li>
+                            <li className={style.item}><a href="">Friends</a></li>
+                        </ul>
+
+                        <div>
+                            <button className={style.button}>Add Friend</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+export default ProfileInfo;

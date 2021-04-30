@@ -1,0 +1,98 @@
+.timeline_cover {
+    background: pink;
+    margin: 0 0 20px 0;
+}
+
+.timeline_wrapper {
+    min-height: 320px;
+    width: 100%;
+    background-image: url("https://themified.com/friend-finder/images/covers/1.jpg");
+    background-position: center;
+    background-size: cover;
+    border-radius: 0 0 5px 5px;
+    position: relative;
+}
+
+/* timeline_cover-line */
+.timeline_nav_bar {
+    height: 65px;
+    width: 100%;
+    background: rgba(0, 0, 0, .7);
+    position: absolute;
+    bottom: 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+/* profile info */
+.profile_info {
+    text-align: center;
+}
+
+.profile_info_avatarka {
+    height: 200px;
+    width: 200px;
+    border: 5px solid #fff;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center right;
+}
+
+.profile_info_fullname {
+    font-size: 25px;
+}
+
+/*  */
+.profile_menu {
+    height: 100%;
+    width: 70%;
+    color: white;
+    position: absolute;
+    right: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.list_profile_menu {
+    height: 100%;
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+.list_profile_menu li {
+    padding: 7px 10px;
+    margin: 0 10px;
+}
+
+.list_profile_menu li a {
+    color: white;
+    text-decoration: none;
+    transition: 0.5s;
+}
+
+.list_profile_menu li a:hover {
+    color: #27aae1;
+    transition: 0.5s;
+}
+
+.button {
+    color: #fff;
+    background: #27aae1;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 30px;
+    border: none;
+    outline: none;
+    padding: 10px 30px;
+    transition: 0.5s;
+}
+
+.button:hover {
+    color: white;
+    background: #166485;
+    transition: 0.5s;
+}
