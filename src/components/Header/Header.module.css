@@ -1,57 +1,57 @@
 .header {
-    background-color: #231F20;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1;
-    padding: 3px 0;
+	background-color: #231f20;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 1;
+	padding: 3px 0;
 }
 
 /* container */
 .container {
-    width: 75%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    padding: 10px 0;
-    margin: auto;
+	width: 75%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	padding: 10px 0;
+	margin: auto;
 }
 
 /* header logo */
 .logo {
-    height: 30px;
-    width: 170px;
-    display: block;
-    margin-right: 15px;
+	height: 30px;
+	width: 170px;
+	display: block;
+	margin-right: 15px;
 }
 
 /* form group */
 .form_group {
-    position: relative;
+	position: relative;
 }
 
 .form_group input {
-    width: 235px;
-    min-width: 100%;
-    color: #fff;
-    background: rgba(255, 255, 255, 0.1);
-    font-size: 13px;
-    border-radius: 13px;
-    border: none;
-    outline: none;
-    padding: 6px 10px 6px 28px;
+	width: 235px;
+	min-width: 100%;
+	color: #fff;
+	background: rgba(255, 255, 255, 0.1);
+	font-size: 13px;
+	border-radius: 13px;
+	border: none;
+	outline: none;
+	padding: 6px 10px 6px 28px;
 }
 
 .form_group input[type="search"]::-webkit-search-cancel-button {
-    margin-left: 10px;
+	margin-left: 10px;
 }
 
 .search_icon {
-    color: white;
-    font-size: 11px;
-    position: absolute;
-    top: 7px;
-    left: 10px;
+	color: white;
+	font-size: 11px;
+	position: absolute;
+	top: 7px;
+	left: 10px;
 }

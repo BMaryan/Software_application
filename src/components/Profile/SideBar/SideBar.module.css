@@ -1,0 +1,77 @@
+.side_bar {
+	height: 100%;
+	width: 25%;
+	background: rgb(237, 236, 236);
+	border-radius: 3px;
+	padding: 15px;
+	margin-top: 73px;
+}
+
+.wrapper_side_bar {
+}
+
+/* side_bar content */
+.side_bar_content {
+}
+
+.side_bar_content div {
+	margin: 10px 0;
+}
+
+.side_bar_title {
+	font-size: 18px;
+	font-weight: bold;
+}
+
+/*  */
+
+.icon_work {
+	color: rgb(72, 70, 70);
+	margin-right: 5px;
+}
+.icon_description {
+	color: rgb(72, 70, 70);
+	margin-right: 5px;
+}
+
+/*  */
+.contacts {
+	display: flex;
+	justify-content: center;
+}
+
+.contacts div {
+	margin: 0 10px;
+}
+.icon_facebook {
+	color: #3b5998;
+}
+
+.icon_youtube {
+	color: #c4302b;
+}
+
+.icon_twitter {
+	color: #00acee;
+}
+
+/*  */
+.button_edit_details {
+	width: 100%;
+	color: white;
+	background: #27aae1;
+	font-size: 14px;
+	font-weight: 600;
+	border: none;
+	outline: none;
+	border-radius: 30px;
+	padding: 7px 0;
+	cursor: pointer;
+	transition: 0.5s;
+}
+
+.button_edit_details:hover {
+	color: white;
+	background: #166485;
+	transition: 0.5s;
+}

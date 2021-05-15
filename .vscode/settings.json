@@ -9,5 +9,8 @@
         "fortawesome",
         "fullname",
         "rerender"
-    ]
+    ],
+    "editor.formatOnSave": true,
+    "prettier.printWidth": 150,
+    "prettier.tabWidth": 4
 }

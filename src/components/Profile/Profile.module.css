@@ -1,3 +1,7 @@
-.content {
-    /* background: rgb(237, 236, 236); */
+.profile {
+}
+
+.profile_content {
+	width: 100%;
+	display: flex;
 }

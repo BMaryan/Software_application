@@ -7,7 +7,6 @@
 
 /* container wrapper */
 .app-wrapper {
-  height: 700px;
   width: 100%;
   max-width: 100%;
   display: flex;
