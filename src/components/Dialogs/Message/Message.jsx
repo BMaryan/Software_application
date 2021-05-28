@@ -13,9 +13,7 @@ const Message = props => {
 				<div className={style.block_message}>
 					<div>
 						<div className={style.name}>{props.name}</div>
-						<div className={style.days_muted}>
-							{props.wroteDaysAgo}
-						</div>
+						<div className={style.days_muted}>{props.wroteDaysAgo}</div>
 					</div>
 					<div>
 						<p>{props.message}</p>

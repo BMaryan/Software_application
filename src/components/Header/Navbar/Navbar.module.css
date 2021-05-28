@@ -17,6 +17,12 @@
 	transition: 0.5s;
 }
 
+.name_user {
+	color: #27aae1;
+	text-decoration: none;
+	cursor: pointer;
+}
+
 .active {
 	color: rgb(91, 91, 91);
 	transition: 0.5s;

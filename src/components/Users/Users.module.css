@@ -133,3 +133,8 @@
 	background: #166485;
 	transition: 0.5s;
 }
+
+.a {
+	color: green;
+	background: red;
+}

@@ -3,6 +3,7 @@ import React from "react";
 import Preloader from "../../common/Preloader/Preloader";
 import style from "./ProfileInfo.module.css";
 import defaultImg from "../../../assets/images/user_photo.jpg";
+import ProfileStatus from "./ProfileStatus/ProfileStatus";
 
 const ProfileInfo = props => {
 	if (!props.profile) {
@@ -22,6 +23,9 @@ const ProfileInfo = props => {
 							/>
 						</div>
 						<div className={style.profile_info_fullname}>{props.profile.fullName}</div>
+						<div>
+							<ProfileStatus status={props.status} updateStatus={props.updateStatus} profileId={props.profile.userId} />
+						</div>
 					</div>
 
 					<div className={style.profile_menu}>

@@ -1,0 +1,36 @@
+.login_container {
+	width: 350px;
+	max-width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 100px auto;
+}
+
+.form {
+	width: 100%;
+	margin: 20px 0;
+}
+
+.form div input,
+.form div button {
+	width: 100%;
+	color: white;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: 1px solid gray;
+	border-radius: 4px;
+	transition: 0.5s;
+}
+
+.form div input[type="submit"] {
+	background: #27aae1;
+	cursor: pointer;
+	transition: 0.5s;
+}
+
+.form div input[type="submit"]:hover {
+	background: #166485;
+	cursor: pointer;
+	transition: 0.5s;
+}

@@ -6,24 +6,11 @@ import Message from "./Message/Message";
 // Dialogs
 const Dialogs = props => {
 	let dialogsElements = props.dialogsPage.dialogs.map(dialog => (
-		<Dialog
-			key={dialog.id}
-			name={dialog.name}
-			id={dialog.id}
-			img={dialog.img}
-			wroteDaysAgo={dialog.wroteDaysAgo}
-			message={dialog.message}
-		/>
+		<Dialog key={dialog.id} name={dialog.name} id={dialog.id} img={dialog.img} wroteDaysAgo={dialog.wroteDaysAgo} message={dialog.message} />
 	));
 
 	let messagesElements = props.dialogsPage.messages.map(message => (
-		<Message
-			key={message.id}
-			name={message.name}
-			img={message.img}
-			wroteDaysAgo={message.wroteDaysAgo}
-			message={message.message}
-		/>
+		<Message key={message.id} name={message.name} img={message.img} wroteDaysAgo={message.wroteDaysAgo} message={message.message} />
 	));
 
 	let addMessage = () => {
@@ -49,9 +36,7 @@ const Dialogs = props => {
 
 					{/* messages */}
 					<div className={style.wrapper__messages}>
-						<div className={style.chat_message}>
-							{messagesElements}
-						</div>
+						<div className={style.chat_message}>{messagesElements}</div>
 
 						{/* send_message */}
 						<div className={style.create_message}>

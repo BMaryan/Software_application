@@ -13,7 +13,7 @@ const Profile = props => {
 	return (
 		<main className={style.profile}>
 			<div className={style.container}>
-				<ProfileInfo profile={props.profile} />
+				<ProfileInfo profile={props.profile} status={props.status} updateStatus={props.updateStatus} />
 
 				<div className={style.profile_content}>
 					<SideBar profile={props.profile} />

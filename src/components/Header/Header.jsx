@@ -20,7 +20,7 @@ const Header = props => {
 				</div>
 
 				<div>
-					<Navbar />
+					<Navbar {...props} />
 				</div>
 			</div>
 		</header>

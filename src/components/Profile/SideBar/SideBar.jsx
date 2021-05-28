@@ -15,9 +15,9 @@ const SideBar = props => {
 						{!props.profile.aboutMe ? (
 							<div></div>
 						) : (
-							<>
+							<div>
 								<FontAwesomeIcon className={style.icon_work} icon={faLaptopHouse} /> {props.profile.aboutMe}
-							</>
+							</div>
 						)}
 					</div>
 
@@ -25,10 +25,10 @@ const SideBar = props => {
 						{!props.profile.lookingForAJobDescription ? (
 							<div></div>
 						) : (
-							<>
+							<div>
 								<FontAwesomeIcon className={style.icon_description} icon={faAudioDescription} />
 								{props.profile.lookingForAJobDescription}
-							</>
+							</div>
 						)}
 					</div>
 

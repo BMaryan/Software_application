@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import style from "./Navbar.module.css";
 
-const Navbar = () => {
+const Navbar = props => {
 	return (
 		<nav className={style.navbar}>
 			<ul className={style.nav}>
@@ -46,9 +46,13 @@ const Navbar = () => {
 				</li> */}
 
 				<li className={style.item}>
-					<NavLink className={style.link} activeClassName={style.active} to='/login'>
-						Login
-					</NavLink>
+					{props.isAuth ? (
+						<div className={style.name_user}>{props.login}</div>
+					) : (
+						<NavLink className={style.link} activeClassName={style.active} to='/login'>
+							Login
+						</NavLink>
+					)}
 				</li>
 			</ul>
 		</nav>
