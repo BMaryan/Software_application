@@ -4,6 +4,17 @@ import Preloader from "../../common/Preloader/Preloader";
 import style from "./ProfileInfo.module.css";
 import defaultImg from "../../../assets/images/user_photo.jpg";
 import ProfileStatus from "./ProfileStatus/ProfileStatus";
+import { NavLink } from "react-router-dom";
+
+const NavLinkWrapper = props => {
+	return (
+		<li className={style.item}>
+			<NavLink to={props.path} activeClassName={style.active}>
+				{props.el}
+			</NavLink>
+		</li>
+	);
+};
 
 const ProfileInfo = props => {
 	if (!props.profile) {
@@ -30,20 +41,10 @@ const ProfileInfo = props => {
 
 					<div className={style.profile_menu}>
 						<ul className={style.list_profile_menu}>
-							<li className={style.item}>
-								<a href='' className={style.active}>
-									Timeline
-								</a>
-							</li>
-							<li className={style.item}>
-								<a href=''>About</a>
-							</li>
-							<li className={style.item}>
-								<a href=''>Album</a>
-							</li>
-							<li className={style.item}>
-								<a href=''>Friends</a>
-							</li>
+							<NavLinkWrapper path='/profile-timeline' el='Timeline' />
+							<NavLinkWrapper path='/profile-about' el='About' />
+							<NavLinkWrapper path='/profile-album' el='Album' />
+							<NavLinkWrapper path='/profile-friends' el='Friends' />
 						</ul>
 
 						<div>

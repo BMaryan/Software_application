@@ -105,13 +105,21 @@
 .body_message {
 	color: rgb(91, 91, 91);
 	display: flex;
+	flex-direction: column;
+}
+
+.body_message div {
+	margin: 3px 0;
 }
 
 /* content footer */
 
 .content_footer {
+}
+
+.footer_form {
+	width: 100%;
 	display: flex;
-	align-items: center;
 }
 
 .button_icon {
@@ -143,4 +151,12 @@
 
 .button_post:focus {
 	color: rgb(91, 91, 91);
+}
+
+.form_comment {
+	width: 100%;
+	display: flex;
+}
+
+.comments {
 }

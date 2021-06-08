@@ -41,6 +41,12 @@
 	overflow-y: scroll;
 }
 
+.message_position {
+	display: flex;
+	justify-content: flex-end;
+	margin-right: 30px;
+}
+
 /* style scrollbar dialogs and messages*/
 .wrapper__dialogs::-webkit-scrollbar-track,
 .chat_message::-webkit-scrollbar-track {
@@ -78,6 +84,11 @@
 	object-fit: cover;
 	object-position: center;
 	margin-right: 10px;
+}
+
+.message_form {
+	width: 100%;
+	display: flex;
 }
 
 .message_input {

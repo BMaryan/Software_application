@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
+import { stopSubmit } from "redux-form";
 import { authAPI } from "../api/api";
 
 const SET_USER_DATA = "SET_USER_DATA";
@@ -18,7 +19,6 @@ const authReducer = (state = initialState, action) => {
 			return {
 				...state,
 				...action.data,
-				isAuth: true,
 			};
 		}
 		default: {
@@ -27,15 +27,39 @@ const authReducer = (state = initialState, action) => {
 	}
 };
 
-export const setAuthUserData = (id, email, login) => ({ type: SET_USER_DATA, data: { id, email, login } });
+export const setAuthUserData = (id, email, login, isAuth) => ({ type: SET_USER_DATA, data: { id, email, login, isAuth } });
 
 // thunks
 export const authUser = () => {
 	return dispatch => {
-		authAPI.authUser().then(data => {
+		return authAPI.authUser().then(data => {
 			if (data.resultCode === 0) {
 				let { id, email, login } = data.data;
-				dispatch(setAuthUserData(id, email, login));
+				dispatch(setAuthUserData(id, email, login, true));
+			}
+		});
+	};
+};
+
+export const login = (email, password, rememberMe) => {
+	return dispatch => {
+		authAPI.login(email, password, rememberMe).then(data => {
+			debugger;
+			if (data.resultCode === 0) {
+				dispatch(authUser());
+			} else {
+				let message = data.messages[0].length > 0 ? data.messages[0] : "Some error";
+				dispatch(stopSubmit("login", { _error: message }));
+			}
+		});
+	};
+};
+
+export const logout = () => {
+	return dispatch => {
+		authAPI.logout().then(data => {
+			if (data.resultCode === 0) {
+				dispatch(setAuthUserData(null, null, null, false));
 			}
 		});
 	};

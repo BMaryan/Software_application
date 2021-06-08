@@ -2,6 +2,29 @@ import React from "react";
 import style from "./Dialogs.module.css";
 import Dialog from "./Dialog/Dialog";
 import Message from "./Message/Message";
+import { Field, reduxForm } from "redux-form";
+import { required, maxLengthCreator } from "../../utils/validators/validators";
+import { Input } from "../common/FormsControls/FormsControls";
+import defaultImg from "../../assets/images/user_photo.jpg";
+import Preloader from "../common/Preloader/Preloader";
+
+let maxLength50 = maxLengthCreator(50);
+
+// form
+const DialogsForm = props => {
+	return (
+		<form onSubmit={props.handleSubmit} className={style.message_form}>
+			<div className={style.message_input}>
+				<Field name='newMessageText' validate={[required, maxLength50]} placeholder='Write a message...' component={Input} />
+			</div>
+			<div>
+				<button>Send</button>
+			</div>
+		</form>
+	);
+};
+
+const DialogsFormRedux = reduxForm({ form: "dialogsForm" })(DialogsForm);
 
 // Dialogs
 const Dialogs = props => {
@@ -9,17 +32,27 @@ const Dialogs = props => {
 		<Dialog key={dialog.id} name={dialog.name} id={dialog.id} img={dialog.img} wroteDaysAgo={dialog.wroteDaysAgo} message={dialog.message} />
 	));
 
-	let messagesElements = props.dialogsPage.messages.map(message => (
-		<Message key={message.id} name={message.name} img={message.img} wroteDaysAgo={message.wroteDaysAgo} message={message.message} />
-	));
+	let messagesElements = props.dialogsPage.messages.map(message => {
+		if (props.profile && message.id % 2 === 0) {
+			return (
+				<div className={style.message_position}>
+					<Message
+						key={message.id}
+						name={message.name}
+						img={message.img}
+						wroteDaysAgo={message.wroteDaysAgo}
+						message={message.message}
+						profile={props.profile}
+					/>
+				</div>
+			);
+		}
 
-	let addMessage = () => {
-		props.addMessage();
-	};
+		return <Message key={message.id} name={message.name} img={message.img} wroteDaysAgo={message.wroteDaysAgo} message={message.message} />;
+	});
 
-	let onMessageChange = event => {
-		let messageInput = event.target.value;
-		props.updateNewMessageText(messageInput);
+	let addNewMessage = values => {
+		props.addMessage(values.newMessageText);
 	};
 
 	return (
@@ -41,22 +74,10 @@ const Dialogs = props => {
 						{/* send_message */}
 						<div className={style.create_message}>
 							<div>
-								<img
-									src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQuRJOEamJLWZhmH8AY8iD8EkRyAMkZVOWwA&usqp=CAU'
-									alt=''
-								/>
+								<img src={props.profile && props.profile.photos.small ? props.profile.photos.small : defaultImg} alt='' />
 							</div>
-							<div className={style.message_input}>
-								<input
-									type='text'
-									value={props.dialogsPage.newMessageText}
-									onChange={onMessageChange}
-									placeholder='Write a message...'
-								/>
-							</div>
-							<div>
-								<button onClick={addMessage}>Send</button>
-							</div>
+
+							<DialogsFormRedux onSubmit={addNewMessage} />
 						</div>
 					</div>
 				</div>

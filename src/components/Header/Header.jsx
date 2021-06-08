@@ -3,8 +3,24 @@ import Navbar from "./Navbar/Navbar";
 import style from "./Header.module.css";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Field, reduxForm } from "redux-form";
+
+const HeaderForm = props => {
+	return (
+		<form onSubmit={props.handleSubmit} className={style.form_group}>
+			<FontAwesomeIcon className={style.search_icon} icon={faSearch} size='sm' />
+			<Field name='inputSearch' type='search' placeholder='Search friends, photos, videos' component='input' />
+		</form>
+	);
+};
+
+const HeaderFormRedux = reduxForm({ form: "headerSearchForm" })(HeaderForm);
 
 const Header = props => {
+	let onSubmit = value => {
+		console.log(value);
+	};
+
 	return (
 		<header className={style.header}>
 			<div className={style.container}>
@@ -14,10 +30,7 @@ const Header = props => {
 					</a>
 				</div>
 
-				<div className={style.form_group}>
-					<FontAwesomeIcon className={style.search_icon} icon={faSearch} size='sm' />
-					<input type='search' placeholder='Search friends, photos, videos' />
-				</div>
+				<HeaderFormRedux onSubmit={onSubmit} />
 
 				<div>
 					<Navbar {...props} />

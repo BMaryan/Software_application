@@ -4,7 +4,52 @@ import Post from "./Post/Post";
 import { faImages, faVideo, faMap, faEdit } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import defaultImg from "../../../assets/images/user_photo.jpg";
+import { Field, reduxForm } from "redux-form";
+import { maxLengthCreator, required } from "../../../utils/validators/validators";
+import { Textarea } from "../../common/FormsControls/FormsControls";
 
+let maxLength10 = maxLengthCreator(10);
+
+// form
+const MyPostsForm = props => {
+	return (
+		<form onSubmit={props.handleSubmit} className={style.wrapper_post}>
+			<div className={style.form_group}>
+				<div>
+					<img src={!props.profile.photos.small ? defaultImg : props.profile.photos.small} alt='' />
+				</div>
+				<div>
+					<Field name='addNewPost' validate={[required, maxLength10]} placeholder='Write what you wish' component={Textarea} />
+				</div>
+			</div>
+
+			<div className={style.tools}>
+				<ul className={style.publishing_tools}>
+					<li>
+						<FontAwesomeIcon icon={faEdit} />
+					</li>
+					<li>
+						<FontAwesomeIcon icon={faImages} />
+					</li>
+					<li>
+						<FontAwesomeIcon icon={faVideo} />
+					</li>
+					<li>
+						<FontAwesomeIcon icon={faMap} />
+					</li>
+				</ul>
+
+				<button>Publish</button>
+			</div>
+		</form>
+	);
+};
+
+const MyPostsFormRedux = reduxForm({
+	form: "addMyPosts",
+})(MyPostsForm);
+
+// my posts
 const MyPosts = props => {
 	let postsElements = props.posts
 		.map(post => (
@@ -15,51 +60,20 @@ const MyPosts = props => {
 				imgProfile={props.profile.photos.small}
 				imgCover={post.imgCover}
 				fullName={props.profile.fullName}
+				addComment={props.addComment}
+				comments={props.comments}
 			/>
 		))
 		.reverse();
 
-	let onAddPost = () => {
-		props.addPost();
-	};
-
-	let onPostChange = event => {
-		let messageInput = event.target.value;
-		props.updateNewPostText(messageInput);
+	let onAddPost = values => {
+		props.addPost(values.addNewPost);
 	};
 
 	return (
 		<div className={style.container}>
 			<div className={style.create_post}>
-				<div className={style.wrapper_post}>
-					<div className={style.form_group}>
-						<div>
-							<img src={!props.profile.photos.small ? defaultImg : props.profile.photos.small} alt='' />
-						</div>
-						<div>
-							<textarea onChange={onPostChange} value={props.newPostText} placeholder='Write what you wish' />
-						</div>
-					</div>
-
-					<div className={style.tools}>
-						<ul className={style.publishing_tools}>
-							<li>
-								<FontAwesomeIcon icon={faEdit} />
-							</li>
-							<li>
-								<FontAwesomeIcon icon={faImages} />
-							</li>
-							<li>
-								<FontAwesomeIcon icon={faVideo} />
-							</li>
-							<li>
-								<FontAwesomeIcon icon={faMap} />
-							</li>
-						</ul>
-
-						<button onClick={onAddPost}>Publish</button>
-					</div>
-				</div>
+				<MyPostsFormRedux {...props} onSubmit={onAddPost} />
 			</div>
 
 			<div className={style.posts}>{postsElements}</div>

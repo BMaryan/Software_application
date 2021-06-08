@@ -8,6 +8,22 @@
 .item {
 	list-style: none;
 	margin: 7px 0 7px 30px;
+	cursor: pointer;
+}
+
+.list {
+	display: flex;
+	justify-content: center;
+}
+
+.item_downList {
+	position: relative;
+	opacity: 1;
+	overflow: hidden;
+}
+
+.item_downList:hover {
+	overflow: visible;
 }
 
 .link {
@@ -26,4 +42,57 @@
 .active {
 	color: rgb(91, 91, 91);
 	transition: 0.5s;
+}
+
+/* list */
+.item_list {
+	width: 250px;
+	background-color: #231f20;
+	list-style: none;
+	border-radius: 5px;
+	position: absolute;
+	top: 21px;
+	padding: 10px;
+	transition: 0.5s;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.item_list li {
+	width: 100%;
+	text-align: center;
+	border-bottom: 1px solid silver;
+	padding: 7px 0;
+	margin: 10px 0;
+	transition: 0.5s;
+}
+
+.item_list li:hover {
+	width: 100%;
+	background-color: #292829;
+	text-align: center;
+	border-radius: 7px;
+	transition: 0.5s;
+}
+
+.item_list li a {
+	color: white;
+}
+
+/* icons */
+.icon_arrowDown {
+	margin-left: 5px;
+}
+
+.icon_signOut,
+.icon_setings,
+.icon_arrowRight,
+.icon_display {
+	color: white;
+	margin-right: 10px;
+}
+
+.icon_arrowRight {
+	margin-left: 10px;
 }

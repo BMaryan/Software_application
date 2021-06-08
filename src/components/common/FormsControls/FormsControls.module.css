@@ -1,0 +1,17 @@
+/* examples: input, textarea */
+
+.showErrorBorder input,
+.showErrorBorder textarea {
+	border: 1px solid red;
+	/* border-radius: 5px; */
+}
+
+/* examples: span */
+.showErrorBlock {
+	color: red;
+	font-size: 15px;
+}
+
+.formCommonOfError {
+	color: red;
+}
