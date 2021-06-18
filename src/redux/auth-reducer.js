@@ -44,7 +44,6 @@ export const authUser = () => {
 export const login = (email, password, rememberMe) => {
 	return dispatch => {
 		authAPI.login(email, password, rememberMe).then(data => {
-			debugger;
 			if (data.resultCode === 0) {
 				dispatch(authUser());
 			} else {

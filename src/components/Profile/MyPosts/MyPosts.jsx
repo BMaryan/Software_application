@@ -50,8 +50,9 @@ const MyPostsFormRedux = reduxForm({
 })(MyPostsForm);
 
 // my posts
-const MyPosts = props => {
-	let postsElements = props.posts
+const MyPosts = React.memo(props => {
+	let postsElements = [...props.posts]
+		.reverse()
 		.map(post => (
 			<Post
 				key={post.id}
@@ -63,8 +64,7 @@ const MyPosts = props => {
 				addComment={props.addComment}
 				comments={props.comments}
 			/>
-		))
-		.reverse();
+		));
 
 	let onAddPost = values => {
 		props.addPost(values.addNewPost);
@@ -79,6 +79,6 @@ const MyPosts = props => {
 			<div className={style.posts}>{postsElements}</div>
 		</div>
 	);
-};
+});
 
 export default MyPosts;

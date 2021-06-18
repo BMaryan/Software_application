@@ -27,10 +27,8 @@ const Navbar = props => {
 				<li className={style.item}>
 					{props.isAuth ? (
 						<ul className={style.list + " " + style.link + " " + style.item_downList}>
-							{/* <li className={style.link + " " + style.item_downList}> */}
 							{props.login}
 							<FontAwesomeIcon className={style.icon_arrowDown} icon={faSortDown} />
-							{/* </li> */}
 
 							<ul className={style.item_list}>
 								<li className={style.item}>

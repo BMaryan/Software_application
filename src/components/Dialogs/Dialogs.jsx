@@ -28,12 +28,16 @@ const DialogsFormRedux = reduxForm({ form: "dialogsForm" })(DialogsForm);
 
 // Dialogs
 const Dialogs = props => {
+	if (!props.profile) {
+		return <Preloader />;
+	}
+
 	let dialogsElements = props.dialogsPage.dialogs.map(dialog => (
 		<Dialog key={dialog.id} name={dialog.name} id={dialog.id} img={dialog.img} wroteDaysAgo={dialog.wroteDaysAgo} message={dialog.message} />
 	));
 
 	let messagesElements = props.dialogsPage.messages.map(message => {
-		if (props.profile && message.id % 2 === 0) {
+		if (props.profile.userId === message.id) {
 			return (
 				<div className={style.message_position}>
 					<Message
@@ -48,12 +52,19 @@ const Dialogs = props => {
 			);
 		}
 
+		console.log(props);
+
 		return <Message key={message.id} name={message.name} img={message.img} wroteDaysAgo={message.wroteDaysAgo} message={message.message} />;
 	});
 
-	let addNewMessage = values => {
-		props.addMessage(values.newMessageText);
+	let addNewMessage = (values, id, name, img) => {
+		if (props.profile) {
+			let profileImg = props.profile.photos.small ? props.profile.photos.small : defaultImg;
+			props.addMessage(props.profile.userId, props.profile.fullName, profileImg, values.newMessageText);
+		}
 	};
+
+	console.log(props);
 
 	return (
 		<div className={style.container}>

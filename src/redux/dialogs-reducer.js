@@ -4,7 +4,7 @@ let initialState = {
 	dialogs: [
 		{
 			id: 1,
-			name: "Nazar",
+			name: "Group",
 			img: "http://demo.foxthemes.net/socialitev2.0/assets/images/avatars/avatar-1.jpg",
 			wroteDaysAgo: "3 days ago",
 			message: "Hello!",
@@ -88,20 +88,6 @@ let initialState = {
 			wroteDaysAgo: "1 days ago",
 			message: "I'm watching a football...)",
 		},
-		{
-			id: 5,
-			name: "Nazar",
-			img: "http://demo.foxthemes.net/socialitev2.0/assets/images/avatars/avatar-1.jpg",
-			wroteDaysAgo: "1 days ago",
-			message: "And, you?",
-		},
-		{
-			id: 6,
-			name: "Vitalik",
-			img: "http://demo.foxthemes.net/socialitev2.0/assets/images/avatars/avatar-4.jpg",
-			wroteDaysAgo: "1 days ago",
-			message: "I'm eating now)",
-		},
 	],
 };
 
@@ -109,9 +95,9 @@ const dialogsReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case ADD_MESSAGE: {
 			let newMessage = {
-				id: 2,
-				name: "Nazar",
-				img: "http://demo.foxthemes.net/socialitev2.0/assets/images/avatars/avatar-1.jpg",
+				id: action.id,
+				name: action.name,
+				img: action.img,
 				wroteDaysAgo: 1,
 				message: action.newMessageText,
 			};
@@ -126,6 +112,6 @@ const dialogsReducer = (state = initialState, action) => {
 	}
 };
 
-export const addMessageActionCreator = newMessageText => ({ type: ADD_MESSAGE, newMessageText });
+export const addMessageActionCreator = (id, name, img, newMessageText) => ({ type: ADD_MESSAGE, id, name, img, newMessageText });
 
 export default dialogsReducer;

@@ -14,6 +14,9 @@ const Users = props => {
 		arrayPages.splice(15, i);
 	}
 
+	// console.log(props);
+	// console.log(props.users.filter(user => user.followed === true));
+
 	return (
 		<div className={style.users}>
 			<div className={style.users_buttons}>

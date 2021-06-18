@@ -10,7 +10,7 @@ import {
 	getFollowingInProgressSelector,
 	getIsFetchingSelector,
 	getTotalUsersCountSelector,
-	getUsersSelector,
+	getUsersSuperSelector,
 } from "../../redux/users-selectors";
 
 class UsersContainer extends React.Component {
@@ -23,10 +23,10 @@ class UsersContainer extends React.Component {
 	};
 
 	render() {
+		console.log("RENDER USERS");
+
 		return (
 			<div>
-				{/* <ProfileInfo /> */}
-
 				{this.props.isFetching ? <Preloader /> : null}
 
 				<Users
@@ -44,20 +44,9 @@ class UsersContainer extends React.Component {
 	}
 }
 
-// let mapStateToProps = state => {
-// 	return {
-// 		users: state.usersPage.users,
-// 		totalUsersCount: state.usersPage.totalUsersCount,
-// 		getCountUsers: state.usersPage.getCountUsers,
-// 		currentPage: state.usersPage.currentPage,
-// 		isFetching: state.usersPage.isFetching,
-// 		followingInProgress: state.usersPage.followingInProgress,
-// 	};
-// };
-
 let mapStateToProps = state => {
 	return {
-		users: getUsersSelector(state),
+		users: getUsersSuperSelector(state),
 		totalUsersCount: getTotalUsersCountSelector(state),
 		getCountUsers: getCountUsersSelector(state),
 		currentPage: getCurrentPageSelector(state),

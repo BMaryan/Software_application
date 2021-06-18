@@ -3,8 +3,8 @@ import React from "react";
 import Preloader from "../../common/Preloader/Preloader";
 import style from "./ProfileInfo.module.css";
 import defaultImg from "../../../assets/images/user_photo.jpg";
-import ProfileStatus from "./ProfileStatus/ProfileStatus";
 import { NavLink } from "react-router-dom";
+import ProfileStatusWithHooks from "./ProfileStatus/ProfileStatusWithHooks";
 
 const NavLinkWrapper = props => {
 	return (
@@ -35,13 +35,13 @@ const ProfileInfo = props => {
 						</div>
 						<div className={style.profile_info_fullname}>{props.profile.fullName}</div>
 						<div>
-							<ProfileStatus status={props.status} updateStatus={props.updateStatus} profileId={props.profile.userId} />
+							<ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus} profileId={props.profile.userId} />
 						</div>
 					</div>
 
 					<div className={style.profile_menu}>
 						<ul className={style.list_profile_menu}>
-							<NavLinkWrapper path='/profile-timeline' el='Timeline' />
+							<NavLinkWrapper path='/profile' el='Timeline' />
 							<NavLinkWrapper path='/profile-about' el='About' />
 							<NavLinkWrapper path='/profile-album' el='Album' />
 							<NavLinkWrapper path='/profile-friends' el='Friends' />

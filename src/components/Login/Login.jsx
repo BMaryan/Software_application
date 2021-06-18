@@ -9,7 +9,6 @@ import styles from "../common/FormsControls/FormsControls.module.css";
 let maxLength50 = maxLengthCreator(50);
 
 const LoginForm = props => {
-	console.log(props);
 	return (
 		<form onSubmit={props.handleSubmit} className={style.form}>
 			<div>
@@ -19,7 +18,7 @@ const LoginForm = props => {
 				<Field name='password' validate={[required, maxLength50]} type='password' placeholder='Password' component={Input} />
 			</div>
 			<div className={style.checkbox}>
-				<Field name='rememberMe' type='checkbox' component={Input} /> remember me
+				<Field name='rememberMe' type='checkbox' component={Input} />
 			</div>
 			{props.error && <div className={styles.formCommonOfError}>{props.error}</div>}
 			<div>
@@ -35,6 +34,7 @@ const LoginReduxForm = reduxForm({
 
 const Login = props => {
 	const onSubmit = formData => {
+		console.log(formData);
 		props.login(formData.email, formData.password, formData.rememberMe);
 	};
 

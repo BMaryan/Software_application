@@ -1,12 +1,20 @@
+import React from "react";
 import { connect } from "react-redux";
 import { addCommentAC, addPostActionCreator } from "../../../redux/profile-reducer";
+import { getCommentsSelector, getPostsSelector, getProfileSelector } from "../../../redux/profile-selectors";
 import MyPosts from "./MyPosts";
+
+class MyPostsContainer extends React.PureComponent {
+	render() {
+		return <MyPosts {...this.props} />;
+	}
+}
 
 let mapStateToProps = state => {
 	return {
-		posts: state.profilePage.posts,
-		comments: state.profilePage.comments,
-		profile: state.profilePage.profile,
+		posts: getPostsSelector(state),
+		comments: getCommentsSelector(state),
+		profile: getProfileSelector(state),
 	};
 };
 
@@ -21,6 +29,4 @@ let mapDispatchToProps = dispatch => {
 	};
 };
 
-const MyPostsContainer = connect(mapStateToProps, mapDispatchToProps)(MyPosts);
-
-export default MyPostsContainer;
+export default connect(mapStateToProps, mapDispatchToProps)(MyPostsContainer);

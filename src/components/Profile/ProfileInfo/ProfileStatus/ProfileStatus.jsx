@@ -10,14 +10,6 @@ class ProfileStatus extends React.Component {
 		this.setState({
 			editMode: true,
 		});
-
-		// this.props.profileId === 10
-		// 	? this.setState({
-		// 			editMode: true,
-		// 	  })
-		// 	: this.setState({
-		// 			editMode: false,
-		// 	  });
 	};
 
 	deactivateEditMode = () => {
