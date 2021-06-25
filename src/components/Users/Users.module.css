@@ -5,23 +5,6 @@
 }
 
 .users_buttons {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-wrap: wrap;
-	transition: 0.5s;
-}
-
-.users_buttons div {
-	margin: 0 5px;
-	cursor: pointer;
-}
-
-.unselectedPage {
-	color: black;
-}
-
-.users_buttons .selectedPage {
 	color: #27aae1;
 	font-weight: bold;
 }
@@ -132,9 +115,4 @@
 	color: white;
 	background: #166485;
 	transition: 0.5s;
-}
-
-.a {
-	color: green;
-	background: red;
 }

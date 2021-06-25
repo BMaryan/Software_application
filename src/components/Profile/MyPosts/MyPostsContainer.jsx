@@ -23,7 +23,7 @@ let mapDispatchToProps = dispatch => {
 		addPost: addNewPost => {
 			dispatch(addPostActionCreator(addNewPost));
 		},
-		addComment: (addNewComment, fullName) => {
+		addComment: (addNewComment, fullName, commentId) => {
 			dispatch(addCommentAC(addNewComment, fullName));
 		},
 	};

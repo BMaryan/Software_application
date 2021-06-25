@@ -6,15 +6,16 @@ import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import LoginContainer from "./components/Login/LoginContainer";
-import { connect } from "react-redux";
-// import { authUser } from "./redux/auth-reducer";
-import { compose } from "redux";
-import { initializeApp } from "./redux/app-reducer";
 import Preloader from "./components/common/Preloader/Preloader";
 import Timeline from "./components/Profile/ProfileInfo/Timeline/Timeline";
 import About from "./components/Profile/ProfileInfo/About/About";
 import Album from "./components/Profile/ProfileInfo/Album/Album";
 import Friends from "./components/Profile/ProfileInfo/Friends/Friends";
+import { initializeApp } from "./redux/app-reducer";
+import { connect, Provider } from "react-redux";
+import { compose } from "redux";
+import { BrowserRouter } from "react-router-dom";
+import store from "./redux/redux-store";
 
 class App extends React.Component {
 	componentDidMount() {
@@ -51,4 +52,18 @@ const mapStateToProps = state => {
 	};
 };
 
-export default compose(withRouter, connect(mapStateToProps, { initializeApp }))(App);
+let AppContainer = compose(withRouter, connect(mapStateToProps, { initializeApp }))(App);
+
+const MainAppContainer = props => {
+	return (
+		<React.StrictMode>
+			<Provider store={store}>
+				<BrowserRouter>
+					<AppContainer />
+				</BrowserRouter>
+			</Provider>
+		</React.StrictMode>
+	);
+};
+
+export default MainAppContainer;

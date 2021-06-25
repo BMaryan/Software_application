@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React from "react";
 import { connect } from "react-redux";
 import { follow, unfollow, toggleFollowingInProgress, getUsers, onPageChanged } from "../../redux/users-reducer";
@@ -15,16 +14,16 @@ import {
 
 class UsersContainer extends React.Component {
 	componentDidMount() {
-		this.props.getUsers(this.props.currentPage, this.props.getCountUsers);
+		const { currentPage, getCountUsers } = this.props;
+		this.props.getUsers(currentPage, getCountUsers);
 	}
 
 	onPageChanged = page => {
-		this.props.onPageChanged(page, this.props.getCountUsers);
+		const { getCountUsers } = this.props;
+		this.props.onPageChanged(page, getCountUsers);
 	};
 
 	render() {
-		console.log("RENDER USERS");
-
 		return (
 			<div>
 				{this.props.isFetching ? <Preloader /> : null}

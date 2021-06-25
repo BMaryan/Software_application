@@ -2,7 +2,7 @@
 import React from "react";
 import { authUser } from "./auth-reducer";
 
-const INITIALIZED_SUCCESS = "INITIALIZED_SUCCESS";
+const INITIALIZED_SUCCESS = "software_application/app/INITIALIZED_SUCCESS";
 
 let initialState = {
 	initialized: false,

@@ -1,26 +1,20 @@
 import React from "react";
 import style from "./Login.module.css";
-import { Field, reduxForm } from "redux-form";
+import { reduxForm } from "redux-form";
 import { required, maxLengthCreator } from "../../utils/validators/validators";
-import { Input } from "../common/FormsControls/FormsControls";
+import { Input, wrapperCreateField } from "../common/FormsControls/FormsControls";
 import { Redirect } from "react-router";
 import styles from "../common/FormsControls/FormsControls.module.css";
 
 let maxLength50 = maxLengthCreator(50);
 
-const LoginForm = props => {
+const LoginForm = ({ handleSubmit, error }) => {
 	return (
-		<form onSubmit={props.handleSubmit} className={style.form}>
-			<div>
-				<Field name='email' validate={[required, maxLength50]} type='email' placeholder='Email' component={Input} />
-			</div>
-			<div>
-				<Field name='password' validate={[required, maxLength50]} type='password' placeholder='Password' component={Input} />
-			</div>
-			<div className={style.checkbox}>
-				<Field name='rememberMe' type='checkbox' component={Input} />
-			</div>
-			{props.error && <div className={styles.formCommonOfError}>{props.error}</div>}
+		<form onSubmit={handleSubmit} className={style.form}>
+			{wrapperCreateField("email", [required, maxLength50], "email", "Email", Input)}
+			{wrapperCreateField("password", [required, maxLength50], "password", "Password", Input)}
+			{wrapperCreateField("rememberMe", [], "checkbox", "", Input, "remember me")}
+			{error && <div className={styles.formCommonOfError}>{error}</div>}
 			<div>
 				<button>Sign In</button>
 			</div>
