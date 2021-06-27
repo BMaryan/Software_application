@@ -19,3 +19,22 @@
 	color: #27aae1;
 	font-weight: bold;
 }
+
+/* buttons */
+.wrapper_over_buttons {
+}
+
+.button_next,
+.button_prev {
+	border-radius: 10px;
+	border: 2px solid silver;
+	padding: 0 5px;
+	cursor: pointer;
+	transition: 0.5s;
+}
+
+.button_next:hover,
+.button_prev:hover {
+	background-color: silver;
+	transition: 0.5s;
+}

@@ -1,5 +1,5 @@
 import React from "react";
-import ProfileInfo from "../ProfileInfo";
+// import ProfileInfo from "../ProfileInfo";
 
 const Friends = props => {
 	return (

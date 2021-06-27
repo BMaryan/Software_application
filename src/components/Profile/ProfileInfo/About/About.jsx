@@ -1,5 +1,5 @@
 import React from "react";
-import { ProfileContent } from "../../Profile";
+// import { ProfileContent } from "../../Profile";
 import ProfileInfo from "../ProfileInfo";
 
 const About = props => {
