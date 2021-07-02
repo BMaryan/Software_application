@@ -14,6 +14,7 @@ const FOLLOWING_IN_PROGRESS = "software_application/users/FOLLOWING_IN_PROGRESS"
 let initialState = {
 	users: [],
 	totalUsersCount: 0,
+	getCountPages: 20,
 	getCountUsers: 10,
 	currentPage: 1,
 	isFetching: false,
@@ -78,11 +79,11 @@ export const getUsers = (currentPage, getCountUsers) => async dispatch => {
 	dispatch(setTotalUsersCount(data.totalCount));
 };
 
-export const onPageChanged = (page, getCountUsers) => async dispatch => {
+export const onPageChanged = (page, getCountPages) => async dispatch => {
 	dispatch(setCurrentPage(page));
 	dispatch(toggleIsFetching(true));
 
-	let data = await usersAPI.getUsers(page, getCountUsers);
+	let data = await usersAPI.getUsers(page, getCountPages);
 	dispatch(toggleIsFetching(false));
 	dispatch(setUsers(data.items));
 };

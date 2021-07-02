@@ -14,6 +14,8 @@ const Paginator = props => {
 	let leftPortionPageNumber = (portionNumber - 1) * props.portionSize + 1;
 	let rightPortionPageNumber = portionNumber * props.portionSize;
 
+	console.log(rightPortionPageNumber);
+
 	return (
 		<div className={style.users_buttons}>
 			{portionNumber > 1 && (

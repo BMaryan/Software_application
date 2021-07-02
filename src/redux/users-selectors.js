@@ -16,6 +16,10 @@ export const getCountUsersSelector = state => {
 	return state.usersPage.getCountUsers;
 };
 
+export const getCountPagesSelector = state => {
+	return state.usersPage.getCountPages;
+};
+
 export const getCurrentPageSelector = state => {
 	return state.usersPage.currentPage;
 };

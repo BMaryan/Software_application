@@ -4,6 +4,7 @@ import { follow, unfollow, toggleFollowingInProgress, getUsers, onPageChanged } 
 import Users from "./Users";
 import Preloader from "../common/Preloader/Preloader";
 import {
+	getCountPagesSelector,
 	getCountUsersSelector,
 	getCurrentPageSelector,
 	getFollowingInProgressSelector,
@@ -14,13 +15,13 @@ import {
 
 class UsersContainer extends React.PureComponent {
 	componentDidMount() {
-		const { currentPage, getCountUsers } = this.props;
-		this.props.getUsers(currentPage, getCountUsers);
+		const { currentPage, getCountPages } = this.props;
+		this.props.getUsers(currentPage, getCountPages);
 	}
 
 	onPageChanged = page => {
-		const { getCountUsers } = this.props;
-		this.props.onPageChanged(page, getCountUsers);
+		const { getCountPages } = this.props;
+		this.props.onPageChanged(page, getCountPages);
 	};
 
 	render() {
@@ -48,6 +49,7 @@ let mapStateToProps = state => {
 		users: getUsersSuperSelector(state),
 		totalUsersCount: getTotalUsersCountSelector(state),
 		getCountUsers: getCountUsersSelector(state),
+		getCountPages: getCountPagesSelector(state),
 		currentPage: getCurrentPageSelector(state),
 		isFetching: getIsFetchingSelector(state),
 		followingInProgress: getFollowingInProgressSelector(state),

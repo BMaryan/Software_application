@@ -1,21 +1,24 @@
 import React from "react";
 import "./App.css";
 import { Route, withRouter } from "react-router";
-import ProfileContainer from "./components/Profile/ProfileContainer";
-import DialogsContainer from "./components/Dialogs/DialogsContainer";
-import UsersContainer from "./components/Users/UsersContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
-import LoginContainer from "./components/Login/LoginContainer";
 import Preloader from "./components/common/Preloader/Preloader";
 import Timeline from "./components/Profile/ProfileInfo/Timeline/Timeline";
 import About from "./components/Profile/ProfileInfo/About/About";
 import Album from "./components/Profile/ProfileInfo/Album/Album";
 import Friends from "./components/Profile/ProfileInfo/Friends/Friends";
+import ScrollButtonTop from "./components/common/ScrollButtonTop/ScrollButtonTop";
 import { initializeApp } from "./redux/app-reducer";
 import { connect, Provider } from "react-redux";
 import { compose } from "redux";
 import { BrowserRouter } from "react-router-dom";
 import store from "./redux/redux-store";
+import { withSuspense } from "./hoc/withSuspense";
+import { getAuthorizedUserIdSelector } from "./redux/auth-selectors";
+const ProfileContainer = React.lazy(() => import("./components/Profile/ProfileContainer"));
+const DialogsContainer = React.lazy(() => import("./components/Dialogs/DialogsContainer"));
+const UsersContainer = React.lazy(() => import("./components/Users/UsersContainer"));
+const LoginContainer = React.lazy(() => import("./components/Login/LoginContainer"));
 
 class App extends React.Component {
 	componentDidMount() {
@@ -32,15 +35,16 @@ class App extends React.Component {
 				<HeaderContainer />
 
 				<div className='app-wrapper-content'>
-					<Route path='/profile/:userId?' render={() => <ProfileContainer />} />
+					<Route path='/profile/:userId?' render={withSuspense(ProfileContainer)} />
 					<Route path='/profile' render={() => <Timeline />} />
 					<Route path='/profile-about' render={() => <About />} />
 					<Route path='/profile-album' render={() => <Album />} />
 					<Route path='/profile-friends' render={() => <Friends />} />
-					<Route path='/dialogs' render={() => <DialogsContainer />} />
-					<Route path='/users' render={() => <UsersContainer />} />
-					<Route path='/login' render={() => <LoginContainer />} />
+					<Route path='/dialogs' render={withSuspense(DialogsContainer)} />
+					<Route path='/users' render={withSuspense(UsersContainer)} />
+					<Route path='/login' render={withSuspense(LoginContainer)} />
 				</div>
+				<ScrollButtonTop />
 			</div>
 		);
 	}

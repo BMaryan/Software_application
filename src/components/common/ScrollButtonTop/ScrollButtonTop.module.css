@@ -1,0 +1,17 @@
+.scroll_button_top {
+	background: silver;
+	border-radius: 50%;
+	position: fixed;
+	bottom: 10px;
+	right: 10px;
+	padding: 5px 12px;
+	cursor: pointer;
+}
+
+.show {
+	display: block;
+}
+
+.hidden {
+	display: none;
+}

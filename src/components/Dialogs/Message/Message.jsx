@@ -1,6 +1,5 @@
 import React from "react";
 import style from "./Message.module.css";
-import defaultImg from "../../../assets/images/user_photo.jpg";
 
 // Message user
 const Message = props => {
@@ -9,8 +8,7 @@ const Message = props => {
 			{/* message */}
 			<div className={style.message}>
 				<div>
-					{props.profile ? <img src={defaultImg} alt='' /> : <img src={props.img} alt='' />}
-					{/* {props.profile && props.profile.photos.small ? <img src={props.profile.photos.small} alt='' /> : <img src={props.img} alt='' />} */}
+					{props.profile && props.profile.photos.small ? <img src={props.profile.photos.small} alt='' /> : <img src={props.img} alt='' />}
 				</div>
 				<div className={style.block_message}>
 					<div>
