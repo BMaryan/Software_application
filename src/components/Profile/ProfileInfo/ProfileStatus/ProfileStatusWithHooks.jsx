@@ -29,7 +29,11 @@ const ProfileStatusWithHooks = props => {
 				</div>
 			) : (
 				<div>
-					<input onChange={onStatusChange} autoFocus={true} type='text' onBlur={deactivateEditMode} value={status} />
+					{!props.isOwner ? (
+						<div onDoubleClick={activateEditMode}>{props.status}</div>
+					) : (
+						<input onChange={onStatusChange} autoFocus={true} type='text' onBlur={deactivateEditMode} value={status} />
+					)}
 				</div>
 			)}
 		</div>

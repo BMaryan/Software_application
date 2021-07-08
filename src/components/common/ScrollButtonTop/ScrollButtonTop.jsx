@@ -1,22 +1,31 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import style from "./ScrollButtonTop.module.css";
+import ScrollButton from "react-scroll-button";
 
 const ScrollButtonTop = props => {
-	let scrollButton = () => {
-		if (document.body.scrollTop > 10 || document.documentElement.scrollTop > 10) {
-			<div className={style.scroll_button_top + " " + style.show}>&#8593;</div>;
+	const [visible, setVisible] = useState(true);
+
+	const toggleVisible = () => {
+		const scrolled = document.documentElement.scrollTop;
+		if (scrolled > 10) {
+			setVisible(false);
 		} else {
-			<div className={style.scroll_button_top + " " + style.hidden}>&#8593;</div>;
+			setVisible(true);
 		}
 	};
 
+	let scrollToTop = () => {
+		window.scrollTo({
+			bottom: document.documentElement.scrollIntoView,
+			behavior: "smooth",
+		});
+	};
+
+	window.addEventListener("scroll", toggleVisible);
+
 	return (
-		<div>
-			{document.body.scrollTop >= 0 || document.documentElement.scrollTop >= 0 ? (
-				<div className={style.scroll_button_top + " " + style.show}>&#8593;</div>
-			) : (
-				<div className={style.scroll_button_top + " " + style.hidden}>&#8593;</div>
-			)}
+		<div className={style.scroll_button_top} onClick={scrollToTop}>
+			&#8593;
 		</div>
 	);
 };

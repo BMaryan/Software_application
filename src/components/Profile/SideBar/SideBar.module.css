@@ -42,7 +42,9 @@
 
 .contacts div {
 	margin: 0 10px;
+	cursor: pointer;
 }
+
 .icon_facebook {
 	color: #3b5998;
 }

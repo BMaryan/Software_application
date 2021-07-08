@@ -42,8 +42,6 @@ const Post = props => {
 		props.addComment(values.addComment, props.fullName);
 	};
 
-	console.log("POST", props);
-
 	return (
 		<div className={style.post_wrapper}>
 			<div className={style.post}>

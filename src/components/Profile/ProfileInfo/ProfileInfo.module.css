@@ -27,7 +27,13 @@
 
 /* profile info */
 .profile_info {
+	max-width: 200px;
 	text-align: center;
+}
+
+.content_avatarka {
+	position: relative;
+	transition: 1s;
 }
 
 .profile_info_avatarka {
@@ -37,6 +43,32 @@
 	border-radius: 50%;
 	object-fit: cover;
 	object-position: center right;
+}
+
+.photo_select label {
+	background: white;
+	border-radius: 20px;
+	border: 1px solid white;
+	position: absolute;
+	bottom: 3px;
+	right: 30px;
+	padding: 5px 8px;
+	cursor: pointer;
+	transition: 1s;
+}
+
+.photo_select label:hover {
+	border: 1px solid rgb(233, 231, 231);
+	transition: 1s;
+}
+
+.photo_select input {
+	display: none;
+}
+
+.icon_camera {
+	color: #231f20;
+	font-size: 22px;
 }
 
 .profile_info_fullname {

@@ -14,8 +14,6 @@ const Paginator = props => {
 	let leftPortionPageNumber = (portionNumber - 1) * props.portionSize + 1;
 	let rightPortionPageNumber = portionNumber * props.portionSize;
 
-	console.log(rightPortionPageNumber);
-
 	return (
 		<div className={style.users_buttons}>
 			{portionNumber > 1 && (
@@ -43,7 +41,6 @@ const Paginator = props => {
 						</div>
 					);
 				})}
-			{/* <div>...{props.totalItemsCount}</div> */}
 
 			{portionCount > portionNumber && (
 				<div className={style.wrapper_over_buttons}>

@@ -13,10 +13,17 @@ const Profile = props => {
 	return (
 		<main className={style.profile}>
 			<div className={style.container}>
-				<ProfileInfo profile={props.profile} status={props.status} updateStatus={props.updateStatus} />
+				<ProfileInfo
+					profile={props.profile}
+					savePhoto={props.savePhoto}
+					isOwner={props.isOwner}
+					status={props.status}
+					updateStatus={props.updateStatus}
+					users={props.users}
+				/>
 
 				<div className={style.profile_content}>
-					<SideBar profile={props.profile} />
+					<SideBar profile={props.profile} isOwner={props.isOwner} />
 					<MyPostsContainer />
 				</div>
 			</div>
