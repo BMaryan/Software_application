@@ -35,8 +35,11 @@ export const Input = props => {
 
 export const wrapperCreateField = (name, validate = [], type, placeholder = "", component, text = "") => {
 	return (
-		<div className={style.classN}>
-			<Field name={name} validate={validate} type={type} placeholder={placeholder} component={component} /> {text}
+		<div className={type["checkbox"] ? style.wrapper_checkbox : style.wrapper_field}>
+			<p>
+				<b>{text}</b>
+			</p>
+			<Field className={style.filed} name={name} validate={validate} type={type} placeholder={placeholder} component={component} />
 		</div>
 	);
 };

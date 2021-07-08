@@ -7,14 +7,13 @@
 	margin-top: 73px;
 }
 
-.wrapper_side_bar {
-}
-
 /* side_bar content */
 .side_bar_content {
+	width: 100%;
 }
 
 .side_bar_content div {
+	width: 100%;
 	margin: 10px 0;
 }
 

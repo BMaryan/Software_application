@@ -23,7 +23,7 @@ const Profile = props => {
 				/>
 
 				<div className={style.profile_content}>
-					<SideBar profile={props.profile} isOwner={props.isOwner} />
+					<SideBar profile={props.profile} isOwner={props.isOwner} saveProfile={props.saveProfile} />
 					<MyPostsContainer />
 				</div>
 			</div>
