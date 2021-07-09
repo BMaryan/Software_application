@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { follow, unfollow, toggleFollowingInProgress, getUsers, onPageChanged } from "../../redux/users-reducer";
+import { follow, unfollow, toggleFollowingInProgress, getUsers, onPageChanged, addedFriends } from "../../redux/users-reducer";
 import Users from "./Users";
 import Preloader from "../common/Preloader/Preloader";
 import {
@@ -38,6 +38,7 @@ class UsersContainer extends React.PureComponent {
 					follow={this.props.follow}
 					unfollow={this.props.unfollow}
 					followingInProgress={this.props.followingInProgress}
+					addedFriends={this.props.addedFriends}
 				/>
 			</div>
 		);
@@ -62,4 +63,5 @@ export default connect(mapStateToProps, {
 	toggleFollowingInProgress,
 	getUsers,
 	onPageChanged,
+	addedFriends,
 })(UsersContainer);

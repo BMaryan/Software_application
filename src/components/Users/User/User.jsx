@@ -3,20 +3,23 @@ import style from "../Users.module.css";
 import userPhoto from "../../../assets/images/user_photo.jpg";
 import { NavLink } from "react-router-dom";
 
-const buttonFollowed = (followingInProgress, user, followUnfollow, text) => {
+const buttonFollowed = (followingInProgress, user, followUnfollow, text, addedFriend) => {
 	return (
 		<button
 			disabled={followingInProgress.some(id => id === user.id)}
 			className={style.user_button}
 			onClick={() => {
 				followUnfollow(user.id);
+				if (!user.followed) {
+					addedFriend(user);
+				}
 			}}>
 			{text}
 		</button>
 	);
 };
 
-const User = ({ user, followingInProgress, unfollow, follow }) => {
+const User = ({ user, followingInProgress, unfollow, follow, addedFriends }) => {
 	return (
 		<div key={user.id} className={style.user}>
 			<div className={style.wrapper_user}>
@@ -47,8 +50,8 @@ const User = ({ user, followingInProgress, unfollow, follow }) => {
 					<div className={style.user_status}>{user.status}</div>
 
 					{user.followed
-						? buttonFollowed(followingInProgress, user, unfollow, "Unfollow")
-						: buttonFollowed(followingInProgress, user, follow, "Follow")}
+						? buttonFollowed(followingInProgress, user, unfollow, "Unfollow", addedFriends)
+						: buttonFollowed(followingInProgress, user, follow, "Follow", addedFriends)}
 				</div>
 			</div>
 		</div>

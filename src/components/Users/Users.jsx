@@ -16,7 +16,14 @@ const Users = ({ currentPage, totalUsersCount, getCountUsers, onPageChanged, ...
 
 			<div className={style.users_wrapper}>
 				{props.users.map(user => (
-					<User key={user.id} user={user} followingInProgress={props.followingInProgress} unfollow={props.unfollow} follow={props.follow} />
+					<User
+						key={user.id}
+						user={user}
+						followingInProgress={props.followingInProgress}
+						unfollow={props.unfollow}
+						follow={props.follow}
+						addedFriends={props.addedFriends}
+					/>
 				))}
 			</div>
 		</div>

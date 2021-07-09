@@ -10,6 +10,7 @@ const SET_CURRENT_PAGE = "software_application/users/SET_CURRENT_PAGE";
 const SET_TOTAL_USERS_COUNT = "software_application/users/SET_TOTAL_USERS_COUNT";
 const TOGGLE_IS_FETCHING = "software_application/users/TOGGLE_IS_FETCHING";
 const FOLLOWING_IN_PROGRESS = "software_application/users/FOLLOWING_IN_PROGRESS";
+const ADDED_FRIENDS = "software_application/users/ADDED_FRIENDS";
 
 let initialState = {
 	users: [],
@@ -18,6 +19,7 @@ let initialState = {
 	getCountUsers: 10,
 	currentPage: 1,
 	isFetching: false,
+	friends: [],
 	followingInProgress: [],
 };
 
@@ -55,6 +57,12 @@ const usersReducer = (state = initialState, action) => {
 					: state.followingInProgress.filter(id => id !== action.userId),
 			};
 		}
+		case ADDED_FRIENDS: {
+			return {
+				...state,
+				friends: !action.user.followed ? [...state.friends, action.user] : state.friends.pop(),
+			};
+		}
 		default: {
 			return state;
 		}
@@ -68,6 +76,7 @@ export const setCurrentPage = currentPage => ({ type: SET_CURRENT_PAGE, currentP
 export const setTotalUsersCount = totalCount => ({ type: SET_TOTAL_USERS_COUNT, totalCount: totalCount });
 export const toggleIsFetching = isFetching => ({ type: TOGGLE_IS_FETCHING, isFetching: isFetching });
 export const toggleFollowingInProgress = (isFetching, userId) => ({ type: FOLLOWING_IN_PROGRESS, isFetching: isFetching, userId: userId });
+export const addedFriends = user => ({ type: ADDED_FRIENDS, user });
 
 // 		thunks
 export const getUsers = (currentPage, getCountUsers) => async dispatch => {
