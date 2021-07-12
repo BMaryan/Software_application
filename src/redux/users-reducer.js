@@ -60,7 +60,7 @@ const usersReducer = (state = initialState, action) => {
 		case ADDED_FRIENDS: {
 			return {
 				...state,
-				friends: !action.user.followed ? [...state.friends, action.user] : state.friends.pop(),
+				friends: [...state.friends, action.user],
 			};
 		}
 		default: {
@@ -76,7 +76,7 @@ export const setCurrentPage = currentPage => ({ type: SET_CURRENT_PAGE, currentP
 export const setTotalUsersCount = totalCount => ({ type: SET_TOTAL_USERS_COUNT, totalCount: totalCount });
 export const toggleIsFetching = isFetching => ({ type: TOGGLE_IS_FETCHING, isFetching: isFetching });
 export const toggleFollowingInProgress = (isFetching, userId) => ({ type: FOLLOWING_IN_PROGRESS, isFetching: isFetching, userId: userId });
-export const addedFriends = user => ({ type: ADDED_FRIENDS, user });
+export const addedFriends = (user = null) => ({ type: ADDED_FRIENDS, user });
 
 // 		thunks
 export const getUsers = (currentPage, getCountUsers) => async dispatch => {

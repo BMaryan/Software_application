@@ -12,6 +12,8 @@ const buttonFollowed = (followingInProgress, user, followUnfollow, text, addedFr
 				followUnfollow(user.id);
 				if (!user.followed) {
 					addedFriend(user);
+				} else {
+					addedFriend("");
 				}
 			}}>
 			{text}
