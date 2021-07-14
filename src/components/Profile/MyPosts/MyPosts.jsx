@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import style from "./MyPosts.module.css";
 import Post from "./Post/Post";
 import { faImages, faVideo, faMap, faEdit } from "@fortawesome/free-solid-svg-icons";
@@ -7,11 +7,14 @@ import defaultImg from "../../../assets/images/user_photo.jpg";
 import { Field, reduxForm } from "redux-form";
 import { maxLengthCreator, required } from "../../../utils/validators/validators";
 import { Textarea } from "../../common/FormsControls/FormsControls";
+import PutImageBlock from "./PutImageBlock/PutImageBlock";
 
 let maxLength10 = maxLengthCreator(10);
 
 // form
 const MyPostsForm = props => {
+	let [putImage, setPutImage] = useState(false);
+
 	return (
 		<form onSubmit={props.handleSubmit} className={style.wrapper_post}>
 			<div className={style.form_group}>
@@ -29,7 +32,12 @@ const MyPostsForm = props => {
 						<FontAwesomeIcon icon={faEdit} />
 					</li>
 					<li>
-						<FontAwesomeIcon icon={faImages} />
+						<FontAwesomeIcon
+							onClick={() => {
+								setPutImage(true);
+							}}
+							icon={faImages}
+						/>
 					</li>
 					<li>
 						<FontAwesomeIcon icon={faVideo} />
@@ -38,6 +46,7 @@ const MyPostsForm = props => {
 						<FontAwesomeIcon icon={faMap} />
 					</li>
 				</ul>
+				{putImage ? <PutImageBlock setPutImage={setPutImage} putImageForPost={props.putImageForPost} imgCover={props.imgCover} /> : <></>}
 
 				<button>Publish</button>
 			</div>
@@ -63,6 +72,7 @@ const MyPosts = React.memo(props => {
 				fullName={props.profile.fullName}
 				addComment={props.addComment}
 				comments={props.comments}
+				putLikeAC={props.putLikeAC}
 			/>
 		));
 

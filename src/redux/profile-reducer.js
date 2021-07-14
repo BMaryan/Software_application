@@ -7,6 +7,8 @@ const SET_STATUS = "software_application/profile/SET_STATUS";
 const ADD_COMMENT = "software_application/profile/ADD_COMMENT";
 const DELETE_POST = "software_application/profile/DELETE_POST";
 const SAVE_PHOTO_SUCCESS = "software_application/profile/SAVE_PHOTO";
+const PUT_IMAGE_FOR_POST = "software_application/profile/PUT_IMAGE_FOR_POST";
+const PUT_LIKE = "software_application/profile/PUT_LIKE";
 
 let initialState = {
 	posts: [
@@ -34,6 +36,8 @@ let initialState = {
 	],
 	profile: null,
 	status: "",
+	imgCover: null,
+	currentLikes: 0,
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -42,10 +46,9 @@ const profileReducer = (state = initialState, action) => {
 			let newPost = {
 				id: state.posts.length + 1,
 				message: action.addNewPost,
-				imgCover:
-					"https://a.loveholidays.com/images/holidays/db0ae640226fcba87630348d7ad223689c18c1d4/holidays/turkey/dalaman/marmaris/green-nature-diamond-hotel-1.jpg?auto=webp&quality=45&dpr=2&optimize=high&fit=crop&width=840&height=577",
+				imgCover: state.imgCover,
 				imgProfile: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9gi5CDty4l6bxTwEBIBYrIFNuMrZNsb0COw&usqp=CAU",
-				currentLikes: 120,
+				currentLikes: state.currentLikes,
 			};
 			return {
 				...state,
@@ -87,6 +90,18 @@ const profileReducer = (state = initialState, action) => {
 				profile: { ...state.profile, photos: action.photos },
 			};
 		}
+		case PUT_IMAGE_FOR_POST: {
+			return {
+				...state,
+				imgCover: action.img,
+			};
+		}
+		case PUT_LIKE: {
+			return {
+				...state,
+				currentLikes: state.currentLikes + action.like,
+			};
+		}
 		default: {
 			return state;
 		}
@@ -99,6 +114,8 @@ export const setStatus = status => ({ type: SET_STATUS, status });
 export const addCommentAC = (addNewComment, fullName) => ({ type: ADD_COMMENT, addNewComment, fullName });
 export const deletePostAC = postId => ({ type: DELETE_POST, postId });
 export const savePhotoSuccess = photos => ({ type: SAVE_PHOTO_SUCCESS, photos });
+export const putImageForPost = img => ({ type: PUT_IMAGE_FOR_POST, img });
+export const putLikeAC = like => ({ type: PUT_LIKE, like });
 
 // thunks
 export const setUser = userId => async dispatch => {

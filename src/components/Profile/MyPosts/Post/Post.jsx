@@ -67,8 +67,12 @@ const Post = props => {
 				</div>
 
 				{/* post cover*/}
-				<div className={style.post_cover}>
-					<img src={props.imgCover} alt='' />
+				<div
+					className={style.post_cover}
+					onDoubleClick={() => {
+						props.putLikeAC(1);
+					}}>
+					{props.imgCover ? <img src={props.imgCover} alt='' /> : <></>}
 				</div>
 
 				{/* post content*/}
@@ -100,7 +104,7 @@ const Post = props => {
 							<div className={style.body_message}>
 								<div>
 									<span className={style.title}>{props.fullName}</span>
-									{props.message.length >= 50 ? <span>{props.message.substring(0, 50)} ...</span> : props.message}
+									{props.message && props.message.length >= 50 ? <span>{props.message.substring(0, 50)} ...</span> : props.message}
 								</div>
 
 								<div className={style.comments}>
@@ -134,6 +138,7 @@ const Post = props => {
 };
 
 const PostButtonsIcon = props => {
+	// console.log(props.children.props.aria-label);
 	return <button className={style.button_like}>{props.children}</button>;
 };
 
