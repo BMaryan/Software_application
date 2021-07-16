@@ -52,6 +52,12 @@
 	width: 100%;
 	object-fit: cover;
 	object-position: center;
+	cursor: pointer;
+	transition: 1s;
+}
+
+.active_like {
+	transition: opacity 300ms ease-in;
 }
 
 /* post content */
@@ -82,12 +88,14 @@
 	outline: none;
 	display: flex;
 	margin-right: 10px;
+	transition: 1s;
 }
 
 .button_like svg {
 	font-size: 21px;
 	transition: 0.5s;
 	cursor: pointer;
+	transition: 1s;
 }
 
 .button_like svg:hover {
