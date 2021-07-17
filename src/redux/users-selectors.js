@@ -5,7 +5,11 @@ const getUsersSelector = state => {
 };
 
 export const getUsersSuperSelector = createSelector(getUsersSelector, users => {
-	return users.filter(user => true);
+	return users.filter(user => user);
+});
+
+export const getFriendsSuperSelector = createSelector(getUsersSelector, users => {
+	return users.filter(user => user.followed === true);
 });
 
 export const getTotalUsersCountSelector = state => {

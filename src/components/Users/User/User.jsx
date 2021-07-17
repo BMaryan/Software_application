@@ -10,18 +10,13 @@ const buttonFollowed = (followingInProgress, user, followUnfollow, text, addedFr
 			className={style.user_button}
 			onClick={() => {
 				followUnfollow(user.id);
-				if (!user.followed) {
-					addedFriend(user);
-				} else {
-					addedFriend("");
-				}
 			}}>
 			{text}
 		</button>
 	);
 };
 
-const User = ({ user, followingInProgress, unfollow, follow, addedFriends }) => {
+const User = ({ user, followingInProgress, unfollow, follow, addedFriends, getFriends }) => {
 	return (
 		<div key={user.id} className={style.user}>
 			<div className={style.wrapper_user}>
@@ -52,8 +47,8 @@ const User = ({ user, followingInProgress, unfollow, follow, addedFriends }) => 
 					<div className={style.user_status}>{user.status}</div>
 
 					{user.followed
-						? buttonFollowed(followingInProgress, user, unfollow, "Unfollow", addedFriends)
-						: buttonFollowed(followingInProgress, user, follow, "Follow", addedFriends)}
+						? buttonFollowed(followingInProgress, user, unfollow, "Unfollow")
+						: buttonFollowed(followingInProgress, user, follow, "Follow")}
 				</div>
 			</div>
 		</div>

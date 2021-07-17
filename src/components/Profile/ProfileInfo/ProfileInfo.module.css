@@ -124,6 +124,7 @@
 	outline: none;
 	padding: 10px 30px;
 	transition: 0.5s;
+	cursor: pointer;
 }
 
 .button:hover {

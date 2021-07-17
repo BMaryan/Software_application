@@ -23,6 +23,7 @@ const Users = ({ currentPage, totalUsersCount, getCountUsers, onPageChanged, ...
 						unfollow={props.unfollow}
 						follow={props.follow}
 						addedFriends={props.addedFriends}
+						getFriends={props.getFriends}
 					/>
 				))}
 			</div>

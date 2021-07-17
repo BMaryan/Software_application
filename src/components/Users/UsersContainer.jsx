@@ -8,6 +8,7 @@ import {
 	getCountUsersSelector,
 	getCurrentPageSelector,
 	getFollowingInProgressSelector,
+	getFriendsSuperSelector,
 	getIsFetchingSelector,
 	getTotalUsersCountSelector,
 	getUsersSuperSelector,
@@ -39,6 +40,7 @@ class UsersContainer extends React.PureComponent {
 					unfollow={this.props.unfollow}
 					followingInProgress={this.props.followingInProgress}
 					addedFriends={this.props.addedFriends}
+					getFriends={this.props.getFriends}
 				/>
 			</div>
 		);
@@ -54,6 +56,7 @@ let mapStateToProps = state => {
 		currentPage: getCurrentPageSelector(state),
 		isFetching: getIsFetchingSelector(state),
 		followingInProgress: getFollowingInProgressSelector(state),
+		getFriends: getFriendsSuperSelector(state),
 	};
 };
 

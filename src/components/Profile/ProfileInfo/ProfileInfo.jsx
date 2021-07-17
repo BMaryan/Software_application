@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from "react";
+import React, { useState } from "react";
 import Preloader from "../../common/Preloader/Preloader";
 import style from "./ProfileInfo.module.css";
 import defaultImg from "../../../assets/images/user_photo.jpg";
@@ -19,6 +19,8 @@ const NavLinkWrapper = props => {
 };
 
 const ProfileInfo = props => {
+	// let [toggleFriend, setToggleFriend] = useState(false);
+
 	if (!props.profile) {
 		return <Preloader />;
 	}
@@ -28,6 +30,11 @@ const ProfileInfo = props => {
 			props.savePhoto(event.target.files[0]);
 		}
 	};
+
+	if (props.users) {
+		let currentUser = props.users.find(el => el.id === props.profile.userId);
+		console.log(currentUser);
+	}
 
 	return (
 		<div className={style.timeline_cover}>

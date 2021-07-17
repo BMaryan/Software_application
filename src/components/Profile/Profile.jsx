@@ -20,6 +20,8 @@ const Profile = props => {
 					status={props.status}
 					updateStatus={props.updateStatus}
 					users={props.users}
+					follow={props.follow}
+					unfollow={props.unfollow}
 				/>
 
 				<div className={style.profile_content}>

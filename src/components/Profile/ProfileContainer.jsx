@@ -7,7 +7,8 @@ import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 import { compose } from "redux";
 import { getProfileSelector, getStatusSelector } from "../../redux/profile-selectors";
 import { getAuthorizedUserIdSelector } from "../../redux/auth-selectors";
-import { getUsersSuperSelector } from "../../redux/users-selectors";
+import { getFriendsSuperSelector, getUsersSuperSelector } from "../../redux/users-selectors";
+import { follow, unfollow } from "../../redux/users-reducer";
 
 class ProfileContainer extends React.Component {
 	refreshProfile() {
@@ -43,6 +44,9 @@ class ProfileContainer extends React.Component {
 				status={this.props.status}
 				updateStatus={this.props.updateStatus}
 				users={this.props.users}
+				friends={this.props.friends}
+				follow={this.props.follow}
+				unfollow={this.props.unfollow}
 			/>
 		);
 	}
@@ -54,11 +58,12 @@ const mapStateToProps = state => {
 		status: getStatusSelector(state),
 		authorizedUserId: getAuthorizedUserIdSelector(state),
 		users: getUsersSuperSelector(state),
+		friends: getFriendsSuperSelector(state),
 	};
 };
 
 export default compose(
-	connect(mapStateToProps, { setUserProfile, setUser, getStatus, updateStatus, savePhoto, saveProfile }),
+	connect(mapStateToProps, { setUserProfile, setUser, getStatus, updateStatus, savePhoto, saveProfile, follow, unfollow }),
 	withRouter,
 	withAuthRedirect
 )(ProfileContainer);
